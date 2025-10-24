@@ -43,7 +43,6 @@ async def upload_image(
             contents = await image.read()
             metadata = {
                 'OriginalFilename': image.filename,
-                'UploadTimestamp': str(datetime.now(timezone.utc).isoformat()),
                 'ContentLength': str(len(contents)),
             }
 
