@@ -1,5 +1,4 @@
 import uuid
-from datetime import datetime, timezone
 from http import HTTPStatus
 from typing import List
 
@@ -65,7 +64,7 @@ async def upload_image(
             db_image = Image(
                 image_name=image_name, image_id=image_id, url=image_url
             )
-            
+
             with get_db_session() as s:
                 s.add(db_image)
 

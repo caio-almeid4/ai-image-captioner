@@ -19,3 +19,7 @@ class Report(BaseModel):
     image_id: str
     caption: str
     tags: List[str]
+
+
+class ReportError(BaseModel):
+    reason: str
