@@ -3,7 +3,7 @@ from http import HTTPStatus
 from fastapi import APIRouter, Request, Response
 from sqlalchemy import select
 
-from src.db.conn import get_db_session
+from src.db.connection import get_db_session
 from src.graph.graph import graph_app
 from src.models.api import Report, ReportError
 from src.models.db import Image
@@ -36,5 +36,6 @@ async def create_report(request: Request, response: Response, image_id: str):
 
     response = graph_app.invoke({'image_url': temp_url})
     report = response['report']
+    report.image_id = image_id
 
     return report

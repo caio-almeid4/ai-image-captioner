@@ -4,9 +4,7 @@ import boto3
 from botocore.config import Config
 from fastapi import FastAPI
 from loguru import logger
-
-from src.api.routes.report import report_router
-from src.api.routes.upload import upload_router
+from routes import router
 
 
 @asynccontextmanager
@@ -20,5 +18,4 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan)
-app.include_router(upload_router)
-app.include_router(report_router)
+app.include_router(router)
