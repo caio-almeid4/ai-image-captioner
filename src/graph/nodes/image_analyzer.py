@@ -10,18 +10,18 @@ def analyze_image(state: State) -> State:
     messages = [
         ('system', IMAGE_ANALYZER_PROMPT),
     ]
-    
+
     image_message = {
-    "role": "user",
-    "content": [
-        {
-            "type": "image",
-            "source_type": "url",
-            "url": state['image_url'],
-        },
-    ],
-}
-    
+        'role': 'user',
+        'content': [
+            {
+                'type': 'image',
+                'source_type': 'url',
+                'url': state['image_url'],
+            },
+        ],
+    }
+
     messages.append(image_message)
 
     settings = Settings()
@@ -29,7 +29,7 @@ def analyze_image(state: State) -> State:
         model='gpt-4o-mini',
         temperature=settings.DEFAULT_TEMPERATURE,
         top_p=settings.DEFAULT_TOP_P,
-        api_key=settings.OPENAI_API_KEY
+        api_key=settings.OPENAI_API_KEY,
     )
 
     model_with_structured_output = model.with_structured_output(Report)
